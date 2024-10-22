@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 
 public class Panel extends JPanel implements ActionListener {
 
-    private final int panelWidth = 700;
-    private final int panelHeight = 400;
+    private final int panelWidth = 1600;
+    private final int panelHeight = 800;
     Image trollImg;
     Image backgroundImg;
     Timer timer;
@@ -31,7 +31,10 @@ public class Panel extends JPanel implements ActionListener {
     public void paint(Graphics graphics) {
         super.paint(graphics);
         Graphics2D graphics2D = (Graphics2D) graphics;
-        graphics2D.drawImage(backgroundImg, 0, 0, null);
+        int width = this.getWidth();
+        int height = this.getHeight();
+
+        graphics2D.drawImage(backgroundImg, 0, 0, width, height, null);
         graphics2D.drawImage(trollImg, x, y, null);
     }
 
