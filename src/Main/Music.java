@@ -1,29 +1,45 @@
 package Main;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
 import java.io.File;
+import java.io.IOException;
 
-public class Music implements Runnable {
+public class Music{
+    private static Clip clip;
 
-    private String filePath;
-
-    public Music(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public void run () {
+    public static void playMusic(String location) {
         try {
-            File musicFile = new File(filePath);
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-
-            Thread.sleep(clip.getMicrosecondLength() / 1000);
+            File musicPath = new File(location);
+            if(musicPath.exists()) {
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.start();
+            } else {
+                System.out.println("No se puede encontrar el archivo de audio");
+            }
         } catch (Exception e) {
             System.out.println(e);
+        }
+    }
+
+    public static void pauseMusic() {
+        if (clip != null && clip.isRunning()) {
+            clip.stop();
+        }
+    }
+
+
+    public static void resumeMusic() {
+        if (clip != null && !clip.isRunning()) {
+            clip.start();
+        }
+    }
+
+    public static void stopMusic() {
+        if (clip != null) {
+            clip.stop();
+            clip.close();
         }
     }
 }

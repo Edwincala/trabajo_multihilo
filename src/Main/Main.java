@@ -1,6 +1,8 @@
 package Main;
 
 
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
         /*
@@ -12,9 +14,8 @@ public class Main {
             POO,
             JOptionPane
         * */
-        new Frame();
-        String location = "C:\\Users\\edwin\\OneDrive\\Documentos\\FULL_2024\\2024-2\\maestria\\programacion_avanzada\\trabajo1\\TrabajoAppMultihilo\\src\\HAS-SIDO-HACKEADO.wav";
-        Thread musicThread = new Thread(new Music(location));
-        musicThread.start();
+        SwingUtilities.invokeLater(new Frame());
+        Thread consoleThread = new Thread(new ChatbotApp());
+        consoleThread.start();
     }
 }
