@@ -9,6 +9,8 @@ public class Panel extends JPanel implements ActionListener {
 
     private final int panelWidth = 1600;
     private final int panelHeight = 800;
+
+    String absolutePath = System.getProperty("user.dir");
     Image trollImg;
     Image backgroundImg;
     Timer timer;
@@ -22,8 +24,8 @@ public class Panel extends JPanel implements ActionListener {
     Panel() {
         this.setPreferredSize(new Dimension(panelWidth, panelHeight));
         this.setBackground(Color.BLACK);
-        trollImg = new ImageIcon("C:\\Users\\edwin\\OneDrive\\Documentos\\FULL_2024\\2024-2\\maestria\\programacion_avanzada\\trabajo1\\TrabajoAppMultihilo\\src\\troll_face.png").getImage();
-        backgroundImg = new ImageIcon("C:\\Users\\edwin\\OneDrive\\Documentos\\FULL_2024\\2024-2\\maestria\\programacion_avanzada\\trabajo1\\TrabajoAppMultihilo\\src\\background.jpg").getImage();
+        trollImg = new ImageIcon(absolutePath + "\\src\\troll_face.png").getImage();
+        backgroundImg = new ImageIcon(absolutePath + "\\src\\background.jpg").getImage();
         timer = new Timer(10, this);
         timer.start();
     }

@@ -4,10 +4,11 @@ public class Chatbot extends ChatbotBase{
 
     @Override
     public void respondToUser(String input) {
+        String absolutePath = System.getProperty("user.dir");
         switch (input.toLowerCase()) {
             case "reproducir música":
                 System.out.println("Reproduciendo música...");
-                new Thread(() -> Music.playMusic("C:\\Users\\edwin\\OneDrive\\Documentos\\FULL_2024\\2024-2\\maestria\\programacion_avanzada\\trabajo1\\TrabajoAppMultihilo\\src\\HAS-SIDO-HACKEADO.wav")).start();
+                new Thread(() -> Music.playMusic(absolutePath + "\\src\\HAS-SIDO-HACKEADO.wav")).start();
                 break;
             case "pausar música":
                 System.out.println("Pausando música...");
