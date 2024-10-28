@@ -57,7 +57,6 @@ classDiagram
 
     ChatInterface <|-- ChatbotBase
     ChatbotBase <|-- Chatbot
-    ChatbotApp --> Chatbot
     Chatbot : implements ChatInterface
     ChatbotApp : implements Runnable
     Frame : implements Runnable
