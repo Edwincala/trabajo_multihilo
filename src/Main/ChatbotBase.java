@@ -8,7 +8,7 @@ public abstract class ChatbotBase implements ChatInterface{
     }
 
     public String getFarewell() {
-        return "Adiós, ¡Fue un placer ayudarte?";
+        return "Adiós, ¡Fue un placer ayudarte!";
     }
 
     public abstract void respondToUser(String input);

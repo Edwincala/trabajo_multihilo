@@ -5,58 +5,56 @@ La aplicación realizada fue codificada usando el lenguaje de programación Java
 - La reproducción de un archivo de audio.
 - Una aplicación de consola: Se implementó un chatbot con funcionalidades sencillas que permiten el control de la reproducción de un archivo de audio.
 
-## Diagrama UML:
-
-El diagrama UML de clases bajo el cual se desarrolló la aplicación se presenta a continuación:
+## Diagrama UML
 
 ```mermaid
-ClassDiagram
-    Main --> Chatbot : usa
+classDiagram
+    Main --> ChatbotApp : usa
     Main --> Frame : usa
     ChatbotApp --> Chatbot : usa
     Chatbot --> Music : usa
-    
+
     class Main {
-        +main()
+        + main()
     }
-    
+
     class ChatbotApp {
-        +run()
+        + run()
     }
-    
+
     class Frame {
-        +run()
-        +panel : Panel
+        + run()
+        + panel : Panel
     }
-    
+
     class Panel {
-        +paint(graphics : Graphics)
-        +actionPerformed(e : ActionEvent)
+        + paint(graphics : Graphics)
+        + actionPerformed(e : ActionEvent)
     }
-    
-    class ChatInteface {
+
+    class ChatInterface {
         <<interface>>
-        +respondToUser(input : String)
-        +getGreeting()
-        +getFarewell()
+        + respondToUser(input : String)
+        + getGreeting()
+        + getFarewell()
     }
-    
+
     class ChatbotBase {
-        +getGreeting()
-        ´getFarewell()
+        + getGreeting()
+        + getFarewell()
     }
-    
+
     class Chatbot {
-        +respondToUser(input : String)
+        + respondToUser(input : String)
     }
-    
+
     class Music {
-        +playMusic(filename : String)
-        +pauseMusic()
-        +resumeMusic()
-        +stopMusic()
+        + playMusic(fileName : String)
+        + pauseMusic()
+        + resumeMusic()
+        + stopMusic()
     }
-    
+
     ChatInterface <|-- ChatbotBase
     ChatbotBase <|-- Chatbot
     ChatbotApp --> Chatbot
@@ -64,4 +62,3 @@ ClassDiagram
     ChatbotApp : implements Runnable
     Frame : implements Runnable
     Frame o-- Panel
-```
