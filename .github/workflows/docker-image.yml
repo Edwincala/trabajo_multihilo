@@ -32,7 +32,7 @@ jobs:
       run: find . -name "*.class" -type f -delete
       
     - name: Compile Java
-      run: javac Main/*.java
+      run: javac Main/ChatInterface.java Main/Chatbot.java Main/ChatbotApp.java Main/ChatbotBase.java Main/Frame.java Main/Main.java Main/Music.java Main/Panel.java
 
     - name: Run SpotBugs
       run: spotbugs -textui -effort:max -high Main/Panel.class
