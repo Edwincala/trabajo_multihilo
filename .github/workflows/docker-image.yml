@@ -32,13 +32,13 @@ jobs:
       run: find . -name "*.class" -type f -delete
       
     - name: Compile Java
-      run: javac Main.java ChatInterface.java Chatbot.java ChatbotApp.java ChatbotBase.java Frame.java Music.java Panel.java
+      run: javac Main/*.java
 
     - name: Run SpotBugs
-      run: spotbugs -textui -effort:max -high Panel.class
+      run: spotbugs -textui -effort:max -high Main/Panel.class
 
     - name: Run Java
-      run: java Main
+      run: java Main.Main
 
     - name: Download and Install OWASP Dependency-Check
       run: |
