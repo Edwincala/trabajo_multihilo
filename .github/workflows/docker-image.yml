@@ -41,7 +41,7 @@ jobs:
       run: spotbugs -textui -effort:max -high out
 
     - name: Run Java
-      run: java -cp out Main
+      run: java -Djava.awt.headless=true -cp out Main
 
     - name: Download and Install OWASP Dependency-Check
       run: |
