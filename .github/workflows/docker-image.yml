@@ -28,11 +28,11 @@ jobs:
         sudo ln -s /opt/spotbugs/bin/spotbugs /usr/local/bin/spotbugs
         sudo chmod +x /opt/spotbugs/bin/spotbugs
 
-    - name: Find Java files
-      run: cd ./src
-
     - name: Clean previous builds
       run: find . -name "*.class" -type f -delete
+
+    - name: Find Java files
+      run: cd ./src
       
     - name: Compile Java
       run: javac Chatbot.java ChatbotApp.java ChatbotBase.java ChatInterface.java Frame.java Main.java Music.java Panel.java
