@@ -30,12 +30,9 @@ jobs:
 
     - name: Clean previous builds
       run: find . -name "*.class" -type f -delete
-
-    - name: Find Java files
-      run: cd ./src
       
     - name: Compile Java
-      run: javac Chatbot.java ChatbotApp.java ChatbotBase.java ChatInterface.java Frame.java Main.java Music.java Panel.java
+      run: javac ./src/Chatbot.java ./src/ChatbotApp.java ./src/ChatbotBase.java ./src/ChatInterface.java ./src/Frame.java ./src/Main.java ./src/Music.java ./src/Panel.java
 
     - name: Run SpotBugs
       run: spotbugs -textui -effort:max -high Main.class
