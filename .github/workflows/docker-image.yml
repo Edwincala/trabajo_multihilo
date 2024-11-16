@@ -32,10 +32,13 @@ jobs:
       run: find . -name "*.class" -type f -delete
       
     - name: Compile Java
-      run: javac ./src/Chatbot.java ./src/ChatbotApp.java ./src/ChatbotBase.java ./src/ChatInterface.java ./src/Frame.java ./src/Main.java ./src/Music.java ./src/Panel.java
+      run: javac -d out ./src/*.java
+
+    - name: List compiled files
+      run: ls out
 
     - name: Run SpotBugs
-      run: spotbugs -textui -effort:max -high Main.class
+      run: spotbugs -textui -effort:max -high out
 
     - name: Run Java
       run: java Main
