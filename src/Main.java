@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,6 +12,11 @@ public class Main {
             POO,
             JOptionPane
         * */
+        if (GraphicsEnvironment.isHeadless()){
+            System.out.println("Entorno headless detectado. La GUI no será ejecutada.");
+            return;
+        }
+
         SwingUtilities.invokeLater(new Frame());
         Thread consoleThread = new Thread(new ChatbotApp());
         consoleThread.start();
