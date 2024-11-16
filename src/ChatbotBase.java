@@ -1,5 +1,3 @@
-package Main;
-
 public abstract class ChatbotBase implements ChatInterface{
 
     @Override
