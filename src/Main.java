@@ -12,6 +12,7 @@ public class Main {
             POO,
             JOptionPane
         * */
+
         if (GraphicsEnvironment.isHeadless()){
             System.out.println("Entorno headless detectado. La GUI no será ejecutada.");
             return;

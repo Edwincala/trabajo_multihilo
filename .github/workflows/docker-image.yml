@@ -43,6 +43,18 @@ jobs:
     - name: Run Java
       run: java -Djava.awt.headless=true -cp out Main
 
+    - name: Run Server in Background
+      run: |
+        java -cp out ServerApp &
+        echo "Servidor iniciado..."
+
+    - name: Run Client
+      run: java -cp out ClientApp
+
+    - name: Verify Server Output
+      run: |
+        echo "Verificando la salida del servidor..."
+
     - name: Download and Install OWASP Dependency-Check
       run: |
         curl -L https://github.com/jeremylong/DependencyCheck/releases/download/v6.1.6/dependency-check-6.1.6-release.zip -o dependency-check.zip
@@ -61,9 +73,17 @@ jobs:
         echo 'COPY . /app' >> Dockerfile
         echo 'RUN javac -d out ./src/*.java' >> Dockerfile
         echo 'CMD ["java", "-cp", "out", "Main"]' >> Dockerfile
+        echo 'ENV APP_MODE=server' >> Dockerfile
+        echo 'CMD if [ "$APP_MODE" = "server" ]; then java -cp out ServerApp; else java -cp out ClientApp; fi' >> Dockerfile
 
     - name: Build Docker image
       run: docker build -t java-app .
 
     - name: Run Docker container
       run: docker run java-app
+
+    - name: Run Docker container as Server
+      run: docker run -e APP_MODE=server java-app
+
+    - name: Run Docker container as Client
+      run: docker run -e APP_MODE=client java-app

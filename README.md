@@ -61,3 +61,43 @@ classDiagram
     ChatbotApp : implements Runnable
     Frame : implements Runnable
     Frame o-- Panel
+
+```
+
+## Aplicación de Sockets
+
+Adicionalente, se incluyó una aplicación de comunicación vía Sockets, implementando Threads o hilos de igual manera, se obtuvo un diagrama UML de
+clases como se indica a continuación:
+
+```mermaid
+classDiagram
+    class CommunicationInterface {
+        <<interface>>
+        +sendMessage(message: String): void
+        +receiveMessage(): String
+    }
+
+    class CommunicationProxy {
+        -socket: Socket
+        -out: PrintWriter
+        -in: BufferedReader
+        +CommunicationProxy(host: String, port: int)
+        +CommunicationProxy(serverSocket: ServerSocket)
+        +sendMessage(message: String): void
+        +receiveMessage(): String
+        +close(): void
+    }
+
+    class ServerApp {
+        +main(args: String[]): void
+    }
+
+    class ClientApp {
+        +main(args: String[]): void
+    }
+
+    CommunicationInterface <|.. CommunicationProxy : "implementa"
+    ServerApp --> CommunicationProxy : "usa"
+    ClientApp --> CommunicationProxy : "usa"
+    CommunicationProxy <--* Socket : "1"
+```
